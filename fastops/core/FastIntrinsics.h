@@ -70,7 +70,7 @@ namespace NFastOps {
 
         static inline constexpr __m256i constexpr_mm256_set1_epi32(int i) {
             unsigned int u = static_cast<unsigned int>(i);
-#if defined(_MSC_VER)
+#if defined(_MSC_VER) && !defined(__clang__)
             char first = u & 0xFu;
             char second = (u >> 8) & 0xFu;
             char third = (u >> 16) & 0xFu;
@@ -90,7 +90,7 @@ namespace NFastOps {
         }
 
 static inline constexpr __m256i constexpr_mm256_set1_epi64x(long long l) {
-#if defined(_MSC_VER)
+#if defined(_MSC_VER) && !defined(__clang__)
         unsigned long long u = static_cast<unsigned long long>(l);
         char first = u & 0xFu;
         char second = (u >> 8) & 0xFu;

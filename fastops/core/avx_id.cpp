@@ -37,7 +37,7 @@ namespace NFastOps {
         static constexpr uint32_t AVX2_BIT    = 0x00000020;
 
         static void CpuId(int32_t op, int32_t* res) noexcept {
-#if defined(_MSC_VER) && !defined(__clang__)
+#if defined(_MSC_VER)
             __cpuid((int*)res, op);
 #else
             __cpuid(op, res[EAX], res[EBX], res[ECX], res[EDX]);
